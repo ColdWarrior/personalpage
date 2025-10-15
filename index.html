@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Animated Chillax Terminal - Blue</title>
+    <title>Allan Abundo - Terminal Page</title>
 
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+	
     <style>
         /* ================================================= */
         /* 1. ANIMATED BACKGROUND (CODE RAIN) & BODY STYLES */
@@ -17,23 +18,24 @@
             font-size: 1.5em;
             display: flex;
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            
+            /* MODIFIED: Center content from top */
+            justify-content: flex-start; 
+            
+            /* MODIFIED: Removed align-items: center to let margin: auto center the grid/rows */
+            align-items: flex-start;
+            
             min-height: 100vh;
             margin: 0;
-            overflow: hidden; 
-            padding: 20px;
-            
-            /* CRT Scanline fix */
+            padding: 50px 20px; 
             position: relative; 
             
-            /* CODE RAIN CSS (Now Blue) */
+            /* CODE RAIN CSS (Blue) */
             background-color: #000;
-            /* Updated fill to rgba(0,255,255,...) for blue code rain */
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Ctext x='0' y='20' fill='rgba(0,255,255,0.2)' font-size='20'%3E01%3C/text%3E%3Ctext x='25' y='45' fill='rgba(0,255,255,0.3)' font-size='20'%3E10%3C/text%3E%3Ctext x='50' y='70' fill='rgba(0,255,255,0.4)' font-size='20'%3E01%3C/text%3E%3C/svg%3E");
             animation: rain 20s linear infinite; 
             background-attachment: fixed; 
-            color: #00FFFF; /* Neon Blue text color */
+            color: #00FFFF; /* Neon Blue */
         }
 
         /* Define the Code Rain Animation */
@@ -50,16 +52,17 @@
             letter-spacing: 5px;
             text-align: center;
             margin-bottom: 50px; 
-            color: #00FFFF; /* Neon Blue */
-            text-shadow: 0 0 15px rgba(0, 255, 255, 1); /* Intense Blue glow */
-            
-            /* Transition for smooth hover effect */
+            color: #00FFFF; 
+            text-shadow: 0 0 15px rgba(0, 255, 255, 1); 
             transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; 
             z-index: 10;
+            
+            /* ADDED: Center the H1 on the page */
+            width: 100%; 
         }
         
         h1:hover {
-            color: #FF00FF; /* Magenta hover color for contrast */
+            color: #FF00FF; /* Magenta hover color */
             transform: scale(1.03); 
             cursor: pointer;
         }
@@ -68,16 +71,19 @@
         /* 3. PLAYER CONTAINER STYLES */
         /* ======================================== */
         .player-container {
-            width: 100%;
-            max-width: 600px;
-            border: 2px solid #00FFFF; /* Neon Blue terminal border */
-            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4); /* Neon Blue glow around player */
+            width: 400px; 
+            height: 500px; 
+            border: 2px solid #00FFFF; 
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4); 
             border-radius: 5px; 
             overflow: hidden;
             z-index: 10;
+            margin-top: 0 !important; 
         }
         
         .player-container iframe {
+            width: 100%;
+            height: 100%; 
             display: block;
             border-radius: 0px; 
         }
@@ -85,8 +91,6 @@
         /* ======================================== */
         /* 4. CRT SCANLINE EFFECT WITH FLICKER */
         /* ======================================== */
-        
-        /* The CRT Scanlines Overlay */
         body::before {
             content: '';
             position: fixed; 
@@ -94,8 +98,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            
-            /* Scanline appearance */
             background: 
                 repeating-linear-gradient(
                     to bottom,
@@ -103,58 +105,251 @@
                     rgba(0, 0, 0, 0.3) 50%, 
                     transparent 100%
                 );
-            
             background-size: 100% 4px; 
-            
             opacity: 0.2; 
             pointer-events: none; 
             z-index: 1000;
-            
-            /* Apply the flicker animation */
             animation: flicker 0.15s infinite alternate;
         }
 
-        /* Define the rapid, subtle flicker effect */
         @keyframes flicker {
             0% { opacity: 0.2; }      
             50% { opacity: 0.22; }    
             100% { opacity: 0.19; }   
         }
+
+        /* ======================================== */
+        /* 5. ABOUT ME / INFO PANEL STYLES */
+        /* ======================================== */
+
+        .about-container {
+            width: 900px; /* NEW FIXED WIDTH (600px) */
+            max-width: none !important;
+            margin-top: 0 !important; 
+            padding: 20px; 
+            border: 2px solid #00FFFF; 
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4); 
+            border-radius: 5px;
+            z-index: 10;
+            
+            display: flex; 
+            gap: 15px; 
+            
+            align-items: flex-start; 
+            
+            text-align: left;
+            word-break: break-word;
+        }
+
+        .profile-image {
+            flex-shrink: 0; 
+            width: 230px; 
+            height: 280px; 
+            overflow: hidden;
+            border-radius: 5px;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain; 
+            object-position: center; 
+        }
+
+        .profile-text {
+            flex-grow: 1; 
+        }
+
+        .profile-text h2 {
+            font-size: 1.5em; 
+            color: #FF00FF; 
+            margin-top: 0;
+            margin-bottom: 10px;
+            white-space: nowrap; /* Prevents header wrap */
+        }
+
+        .profile-text p {
+            margin: 5px 0;
+            white-space: nowrap; /* Prevents info lines from wrapping */
+        }
         
+        .profile-text p:last-child {
+            white-space: normal; /* Allow the long paragraph text to wrap */
+        }
+
+        /* ======================================== */
+        /* 6. LINKS PANEL STYLES */
+        /* ======================================== */
+
+        .links-container {
+            width: 900px; /* NEW FIXED WIDTH (Match left column) */
+            max-width: none !important; 
+            margin-top: 30px; 
+            margin-bottom: 50px; 
+            padding: 20px;
+            border: 2px solid #00FFFF; 
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4); 
+            border-radius: 5px;
+            z-index: 10;
+            text-align: left;
+        }
+
+        .links-container h2 {
+            font-size: 1.5em; 
+            color: #FF00FF; 
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .links-container a {
+            color: #00FFFF; 
+            text-decoration: none; 
+            display: block; 
+            margin-bottom: 8px;
+            transition: color 0.2s ease-in-out, text-shadow 0.2s ease-in-out;
+            white-space: nowrap; 
+        }
+
+        .links-container a:hover {
+            color: #FFFF00; 
+            text-shadow: 0 0 8px #FFFF00; 
+        }
+		
+		/* Style the icon */
+		.links-container p a i {
+			font-size: 1.5em; /* Make icons large and prominent */
+			color: inherit; 
+		}
+
+        /* ======================================== */
+        /* 7. TYPING ANIMATION STYLES */
+        /* ======================================== */
+
+        .typing-text {
+            display: inline-block;
+            border-right: 2px solid #00FFFF; 
+            color: #00FFFF;
+        }
+
+        .typing-text.typing {
+            border-right: 2px solid #FF00FF; 
+            animation: blink-cursor 0.75s step-end infinite;
+        }
+
+        /* Cursor Blink Keyframes */
+        @keyframes blink-cursor {
+            from, to { border-color: transparent }
+            50% { border-color: #FF00FF; } 
+        }
+        
+        /* ======================================== */
+        /* 8. TOP CONTENT ROW LAYOUT (FINAL ALIGNMENT FIX) */
+        /* ======================================== */
+        .top-content-row {
+            display: flex; 
+            gap: 20px; 
+            align-items: flex-start; 
+            width: 1300px; /* NEW TOTAL WIDTH (600 + 20 + 280) */
+            margin-top: 20px; 
+            /* FIX: Centering the entire block to align under the centered H1 */
+            margin-left: auto; 
+            margin-right: auto;
+        }
+
+        /* Ensures the links container also centers under the H1 */
+        .links-container {
+            margin-left: auto;
+            margin-right: auto;
+        }
+		
+        /* ---------------------------------------------------- */
+		/* ADDED: ICON SIZING AND HORIZONTAL ROW STYLES */
+		/* ---------------------------------------------------- */
+		.icon-row {
+			display: flex;
+			justify-content: space-between; /* Distribute icons across the container */
+			padding-top: 0px;
+			padding-bottom: 0px;
+			margin-bottom: 0px;
+			width: 300px; /* Limit the width of the icons row */
+		}
     </style>
 </head>
 <body>
-
-    <audio id="terminal-audio" autoplay loop volume="0.2">
-        <source src="static_hum.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-    </audio>
-
+    
     <h1>Welcome!!! Chillax and Listen.</h1>
     
-    <div class="player-container">
-        <iframe 
-            data-testid="embed-iframe" 
-            style="border-radius:0px" 
-            src="https://open.spotify.com/embed/playlist/4xiYzgnj3MF1gIDJbBDpH5?utm_source=generator" 
-            width="100%" 
-            height="352" 
-            frameBorder="0" 
-            allowfullscreen="" 
-            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-            loading="lazy">
-        </iframe>
-    </div>
+    <div class="top-content-row">
+        
+        <div class="left-column">
+            
+            <div class="about-container">
+                <div class="profile-image">
+                    <img src="images/AllanAbundo_Model.jpg" alt="Allan Abundo Profile">
+                </div>
+                <div class="profile-text">
+                    <h2>> USER INFO ACCESS GRANTED</h2>
+                    
+                    <p>NAME: <span class="typing-text" data-text="ALLAN ANDREW ABUNDO"></span></p>
+                    <p>STATUS: <span class="typing-text" data-text="CHILLAXING & LISTENING"></span></p>
+                    <p>MISSION: <span class="typing-text" data-text="SEEKING COOL CODE & VIBES"></span></p>
+                    
+                    <p>—</p>
+                    <p>Amare et sapere vix deo conceditur</p>
+                </div>
+            </div>
+			<div class="links-container">
+				<h2>> INITIATING HYPERLINK JUMP</h2>
+				
+				<div class="icon-row">
+					<p><a href="https://github.com/ColdWarrior"><i class="fab fa-github"></i></a></p>
+					<p><a href="https://www.facebook.com/ColdCloud"><i class="fab fa-facebook-f"></i></a></p>
+					<p><a href="https://www.youtube.com/@theacube3116"><i class="fab fa-youtube"></i></a></p>
+					<p><a href="https://www.linkedin.com/in/allan-andrew-abundo"><i class="fab fa-linkedin-in"></i></a></p>
+					<p><a href="https://x.com/AngelusExCaelum"><i class="fab fa-x-twitter"></i></a></p>
+				</div>
 
-    <script>
-        document.addEventListener('click', function() {
-            const audio = document.getElementById('terminal-audio');
-            // Check if audio element exists and is paused (blocked by browser)
-            if (audio && audio.paused) {
-                audio.play().catch(error => {
-                    // Ignore common errors related to autoplay policy
-                });
-            }
+			</div>
+		
+
+        </div> <div class="player-container">
+            <iframe 
+                data-testid="embed-iframe" 
+                style="border-radius:0px" 
+                src="https://open.spotify.com/embed/playlist/4xiYzgnj3MF1gIDJbBDpH5?utm_source=generator" 
+                width="100%" 
+                height="100%" 
+                frameBorder="0" 
+                allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy">
+            </iframe>
+        </div>
+    </div> <script>
+        const elements = document.querySelectorAll('.typing-text');
+        
+        elements.forEach((span, index) => {
+            const fullText = span.getAttribute('data-text');
+            const speed = 100; // milliseconds per character
+            
+            // Delay each line's start by 2 seconds * its index
+            setTimeout(() => {
+                let charIndex = 0;
+                span.textContent = ''; // Clear the text to start blank
+                span.classList.add('typing'); // Start blinking cursor
+
+                function type() {
+                    if (charIndex < fullText.length) {
+                        span.textContent += fullText.charAt(charIndex);
+                        charIndex++;
+                        setTimeout(type, speed);
+                    } else {
+                        // Typing is done, stop blinking cursor
+                        span.classList.remove('typing');
+                    }
+                }
+                type();
+            }, index * 2000); 
         });
     </script>
 
