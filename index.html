@@ -1,10 +1,67 @@
 <!DOCTYPE html>
-<html>
-<body>
-<h1>Welcome!!! Chillax and Listen.</h1>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chillax & Listen</title>
 
-<div>
-	<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4xiYzgnj3MF1gIDJbBDpH5?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* Reset and Base Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212; /* Dark background for a 'cool' vibe */
+            color: #E0E0E0; /* Light text color */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center content horizontally */
+            margin: 0;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+
+        /* Header Style */
+        h1 {
+            font-weight: 800; /* Extra bold */
+            font-size: 3em; /* Larger size */
+            letter-spacing: 2px;
+            text-align: center;
+            margin-bottom: 30px;
+            /* Optional: Add a subtle text shadow */
+            text-shadow: 0 0 10px rgba(0, 255, 255, 0.4); 
+        }
+
+        /* Container for the player */
+        .player-container {
+            width: 100%;
+            max-width: 600px; /* Keep the music player from getting too wide */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Add a lift effect */
+            border-radius: 15px; /* Match Spotify's rounded corners */
+            overflow: hidden; /* Important for shadow to look clean */
+        }
+        
+        .player-container iframe {
+            display: block; /* Removes any extra space below the iframe */
+        }
+    </style>
+</head>
+<body>
+
+<h1 class="animate-pulse">Welcome!!! Chillax and Listen.</h1>
+
+<div class="player-container">
+    <iframe 
+        data-testid="embed-iframe" 
+        style="border-radius:12px" 
+        src="https://open.spotify.com/embed/playlist/4xiYzgnj3MF1gIDJbBDpH5?utm_source=generator" 
+        width="100%" 
+        height="352" 
+        frameBorder="0" 
+        allowfullscreen="" 
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+        loading="lazy">
+    </iframe>
 </diV>
 
 </body>
