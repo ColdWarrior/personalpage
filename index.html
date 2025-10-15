@@ -3,75 +3,160 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chillax & Listen</title>
+    <title>Animated Chillax Terminal - Blue</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 
     <style>
-        /* Reset and Base Styles */
+        /* ================================================= */
+        /* 1. ANIMATED BACKGROUND (CODE RAIN) & BODY STYLES */
+        /* ================================================= */
         body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #121212; /* Dark background for a 'cool' vibe */
-            color: #E0E0E0; /* Light text color */
+            /* General Setup */
+            font-family: 'VT323', monospace; 
+            font-size: 1.5em;
             display: flex;
             flex-direction: column;
-            align-items: center; /* Center content horizontally */
-            margin: 0;
-            padding: 40px 20px;
+            justify-content: center;
+            align-items: center;
             min-height: 100vh;
+            margin: 0;
+            overflow: hidden; 
+            padding: 20px;
+            
+            /* CRT Scanline fix */
+            position: relative; 
+            
+            /* CODE RAIN CSS (Now Blue) */
+            background-color: #000;
+            /* Updated fill to rgba(0,255,255,...) for blue code rain */
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Ctext x='0' y='20' fill='rgba(0,255,255,0.2)' font-size='20'%3E01%3C/text%3E%3Ctext x='25' y='45' fill='rgba(0,255,255,0.3)' font-size='20'%3E10%3C/text%3E%3Ctext x='50' y='70' fill='rgba(0,255,255,0.4)' font-size='20'%3E01%3C/text%3E%3C/svg%3E");
+            animation: rain 20s linear infinite; 
+            background-attachment: fixed; 
+            color: #00FFFF; /* Neon Blue text color */
         }
 
-        /* Header Style */
-		h1 {
-			font-weight: 800; 
-			font-size: 3em; 
-			letter-spacing: 2px;
-			text-align: center;
-			margin-bottom: 30px;
-			text-shadow: 0 0 10px rgba(0, 255, 255, 0.4); 
-			color: #E0E0E0; /* Initial color */
-			
-			/* 1. Add a smooth transition for all property changes over 0.3 seconds */
-			transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; 
-		}
-		
-		h1:hover {
-			color: #00FFFF; /* Bright aqua color */
-			transform: scale(1.05); /* Grow the text by 5% */
-			cursor: pointer; /* Change mouse to a hand to indicate interactivity */
-		}
+        /* Define the Code Rain Animation */
+        @keyframes rain {
+            from { background-position: 0 0; }
+            to { background-position: 0 500px; } 
+        }
+        
+        /* ======================================== */
+        /* 2. HEADER STYLES & HOVER EFFECT */
+        /* ======================================== */
+        h1 {
+            font-size: 4em; 
+            letter-spacing: 5px;
+            text-align: center;
+            margin-bottom: 50px; 
+            color: #00FFFF; /* Neon Blue */
+            text-shadow: 0 0 15px rgba(0, 255, 255, 1); /* Intense Blue glow */
+            
+            /* Transition for smooth hover effect */
+            transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; 
+            z-index: 10;
+        }
+        
+        h1:hover {
+            color: #FF00FF; /* Magenta hover color for contrast */
+            transform: scale(1.03); 
+            cursor: pointer;
+        }
 
-        /* Container for the player */
+        /* ======================================== */
+        /* 3. PLAYER CONTAINER STYLES */
+        /* ======================================== */
         .player-container {
             width: 100%;
-            max-width: 600px; /* Keep the music player from getting too wide */
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Add a lift effect */
-            border-radius: 15px; /* Match Spotify's rounded corners */
-            overflow: hidden; /* Important for shadow to look clean */
+            max-width: 600px;
+            border: 2px solid #00FFFF; /* Neon Blue terminal border */
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4); /* Neon Blue glow around player */
+            border-radius: 5px; 
+            overflow: hidden;
+            z-index: 10;
         }
         
         .player-container iframe {
-            display: block; /* Removes any extra space below the iframe */
+            display: block;
+            border-radius: 0px; 
         }
+
+        /* ======================================== */
+        /* 4. CRT SCANLINE EFFECT WITH FLICKER */
+        /* ======================================== */
+        
+        /* The CRT Scanlines Overlay */
+        body::before {
+            content: '';
+            position: fixed; 
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            
+            /* Scanline appearance */
+            background: 
+                repeating-linear-gradient(
+                    to bottom,
+                    transparent 0%,
+                    rgba(0, 0, 0, 0.3) 50%, 
+                    transparent 100%
+                );
+            
+            background-size: 100% 4px; 
+            
+            opacity: 0.2; 
+            pointer-events: none; 
+            z-index: 1000;
+            
+            /* Apply the flicker animation */
+            animation: flicker 0.15s infinite alternate;
+        }
+
+        /* Define the rapid, subtle flicker effect */
+        @keyframes flicker {
+            0% { opacity: 0.2; }      
+            50% { opacity: 0.22; }    
+            100% { opacity: 0.19; }   
+        }
+        
     </style>
 </head>
 <body>
 
-<h1 class="animate-pulse">Welcome!!! Chillax and Listen.</h1>
+    <audio id="terminal-audio" autoplay loop volume="0.2">
+        <source src="static_hum.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
 
-<div class="player-container">
-    <iframe 
-        data-testid="embed-iframe" 
-        style="border-radius:12px" 
-        src="https://open.spotify.com/embed/playlist/4xiYzgnj3MF1gIDJbBDpH5?utm_source=generator" 
-        width="100%" 
-        height="352" 
-        frameBorder="0" 
-        allowfullscreen="" 
-        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
-        loading="lazy">
-    </iframe>
-</diV>
+    <h1>Welcome!!! Chillax and Listen.</h1>
+    
+    <div class="player-container">
+        <iframe 
+            data-testid="embed-iframe" 
+            style="border-radius:0px" 
+            src="https://open.spotify.com/embed/playlist/4xiYzgnj3MF1gIDJbBDpH5?utm_source=generator" 
+            width="100%" 
+            height="352" 
+            frameBorder="0" 
+            allowfullscreen="" 
+            allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+            loading="lazy">
+        </iframe>
+    </div>
+
+    <script>
+        document.addEventListener('click', function() {
+            const audio = document.getElementById('terminal-audio');
+            // Check if audio element exists and is paused (blocked by browser)
+            if (audio && audio.paused) {
+                audio.play().catch(error => {
+                    // Ignore common errors related to autoplay policy
+                });
+            }
+        });
+    </script>
 
 </body>
 </html>
