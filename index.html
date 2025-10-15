@@ -22,15 +22,24 @@
         }
 
         /* Header Style */
-        h1 {
-            font-weight: 800; /* Extra bold */
-            font-size: 3em; /* Larger size */
-            letter-spacing: 2px;
-            text-align: center;
-            margin-bottom: 30px;
-            /* Optional: Add a subtle text shadow */
-            text-shadow: 0 0 10px rgba(0, 255, 255, 0.4); 
-        }
+		h1 {
+			font-weight: 800; 
+			font-size: 3em; 
+			letter-spacing: 2px;
+			text-align: center;
+			margin-bottom: 30px;
+			text-shadow: 0 0 10px rgba(0, 255, 255, 0.4); 
+			color: #E0E0E0; /* Initial color */
+			
+			/* 1. Add a smooth transition for all property changes over 0.3 seconds */
+			transition: color 0.3s ease-in-out, transform 0.3s ease-in-out; 
+		}
+		
+		h1:hover {
+			color: #00FFFF; /* Bright aqua color */
+			transform: scale(1.05); /* Grow the text by 5% */
+			cursor: pointer; /* Change mouse to a hand to indicate interactivity */
+		}
 
         /* Container for the player */
         .player-container {
