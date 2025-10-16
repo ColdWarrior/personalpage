@@ -273,6 +273,76 @@
 			margin-bottom: 0px;
 			width: 300px; /* Limit the width of the icons row */
 		}
+		
+		/* ======================================== */
+        /* 9. RECORDED DATA SECTION STYLES (NEW!) */
+        /* ======================================== */
+        .recorded-data-section {
+            width: 900px; /* Outer width for the entire section */
+            max-width: none !important; 
+            margin-top: 0; 
+            margin-bottom: 50px; 
+            padding: 20px;
+            border: 2px solid #00FFFF; 
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.4); 
+            border-radius: 5px;
+            z-index: 10;
+            text-align: left;
+            display: flex;
+            flex-direction: column; 
+            align-items: flex-start; /* Align header and playlist row to the start */
+        }
+
+        .recorded-data-section > h2 { /* Targeting the main H2 for the section */
+            font-size: 1.5em; 
+            color: #FF00FF; 
+            margin-top: 0;
+            margin-bottom: 20px; 
+        }
+
+        .playlist-row {
+            display: flex;
+            justify-content: space-between; 
+            width: 100%; 
+            gap: 20px; 
+        }
+
+        .playlist-item { /* New wrapper for h3 + playlist-card */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center the h3 above the card */
+            flex: 1;
+            min-width: 280px; /* Minimum width for each item (h3 + card) */
+        }
+        
+        .playlist-item h3 { 
+			font-size: 1.0em; /* ADJUSTED SIZE (from 1.2em) */
+			color: #00FFFF;
+			margin: 0 0 10px 0;
+			text-align: center;
+			white-space: nowrap; 
+			overflow: hidden;
+			text-overflow: ellipsis; 
+		}
+
+        .playlist-card {
+            width: 100%; /* Take full width of its parent (.playlist-item) */
+            height: 250px; /* Fixed height for the iframe */
+            border: 2px solid #00FFFF; 
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.4); 
+            border-radius: 5px;
+            overflow: hidden; 
+            display: flex; /* Ensures iframe fills the card */
+        }
+
+        .playlist-card iframe {
+            width: 100%;
+            height: 100%; /* Fill the playlist-card height */
+            display: block;
+            border: none;
+            border-radius: 0px;
+        }
+		
     </style>
 </head>
 <body>
@@ -307,16 +377,153 @@
 					<p><a href="https://www.youtube.com/@theacube3116"><i class="fab fa-youtube"></i></a></p>
 					<p><a href="https://www.linkedin.com/in/allan-andrew-abundo"><i class="fab fa-linkedin-in"></i></a></p>
 					<p><a href="https://x.com/AngelusExCaelum"><i class="fab fa-x-twitter"></i></a></p>
+					<p><a href="https://discordapp.com/users/280711531388469250"><i class="fab fa-discord"></i></a></p>
 				</div>
 
 			</div>
+			
+			<div class="recorded-data-section">
+				<h2>> ANALYZING RECORDED DATA</h2>
+				<div class="playlist-row">
+					<div class="playlist-item">
+						<h3>Clair Obscur: Expedition 33</h3>
+						<div class="playlist-card">
+							
+							<iframe
+								width="100%"
+								height="100%"
+								src="https://www.youtube.com/embed/videoseries?list=PLJQidax_7zIhqK5z433_x1T1NbA8t11AQ" 
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen>
+							</iframe>
+						</div>
+					</div>
+					<div class="playlist-item">
+						<h3>Frostpunk 2</h3>
+						<div class="playlist-card">
+							
+							<iframe
+								width="100%"
+								height="100%"
+								src="https://www.youtube.com/embed/videoseries?list=PLJQidax_7zIjUG7eIVRN33onYYC8cHT2J" 
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen>
+							</iframe>
+						</div>
+					</div>
+					<div class="playlist-item">
+						<h3>Hollow Knight: Silksong</h3>
+						<div class="playlist-card">
+							
+							<iframe
+								width="100%"
+								height="100%"
+								src="https://www.youtube.com/embed/videoseries?list=PLJQidax_7zIiikn7Uew8SjzQRC_58vFnC" 
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen>
+							</iframe>
+						</div>
+					</div>
+				</div>
+				<div class="playlist-row">
+					<div class="playlist-item">
+						<h3>Playlist 4</h3>
+						<div class="playlist-card">
+							
+							<iframe
+								width="100%"
+								height="100%"
+								src="https://www.youtube.com/embed/videoseries?list=Playlist_ID_Here" 
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen>
+							</iframe>
+						</div>
+					</div>
+					<div class="playlist-item">
+						<h3>Playlist 5</h3>
+						<div class="playlist-card">
+							
+							<iframe
+								width="100%"
+								height="100%"
+								src="https://www.youtube.com/embed/videoseries?list=Playlist_ID_Here" 
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen>
+							</iframe>
+						</div>
+					</div>
+					<div class="playlist-item">
+						<h3>Playlist 6</h3>
+						<div class="playlist-card">
+							
+							<iframe
+								width="100%"
+								height="100%"
+								src="https://www.youtube.com/embed/videoseries?list=Playlist_ID_Here" 
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen>
+							</iframe>
+						</div>
+					</div>
+				</div>
+				<div class="playlist-row">
+					<div class="playlist-item">
+						<h3>Playlist 7</h3>
+						<div class="playlist-card">
+							
+							<iframe
+								width="100%"
+								height="100%"
+								src="https://www.youtube.com/embed/videoseries?list=Playlist_ID_Here" 
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen>
+							</iframe>
+						</div>
+					</div>
+					<div class="playlist-item">
+						<h3>Playlist 8</h3>
+						<div class="playlist-card">
+							
+							<iframe
+								width="100%"
+								height="100%"
+								src="https://www.youtube.com/embed/videoseries?list=Playlist_ID_Here" 
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen>
+							</iframe>
+						</div>
+					</div>
+					<div class="playlist-item">
+						<h3>Playlist 9</h3>
+						<div class="playlist-card">
+							
+							<iframe
+								width="100%"
+								height="100%"
+								src="https://www.youtube.com/embed/videoseries?list=Playlist_ID_Here" 
+								frameborder="0"
+								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+								allowfullscreen>
+							</iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+        </div> 
 		
-
-        </div> <div class="player-container">
+		<div class="player-container">
             <iframe 
                 data-testid="embed-iframe" 
                 style="border-radius:0px" 
-                src="https://open.spotify.com/embed/playlist/4xiYzgnj3MF1gIDJbBDpH5?utm_source=generator" 
+                src="https://open.spotify.com/embed/playlist/7B2Fwlz1cfrqSStlhq3LMX?utm_source=generator" 
                 width="100%" 
                 height="100%" 
                 frameBorder="0" 
@@ -325,6 +532,7 @@
                 loading="lazy">
             </iframe>
         </div>
+
     </div> <script>
         const elements = document.querySelectorAll('.typing-text');
         
